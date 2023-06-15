@@ -5,8 +5,12 @@ const iconLogo = document.querySelector('.figure__logo');
 const pictureImg = document.querySelector('.picture__img');
 const main = document.querySelector('.main');
 const modal = document.querySelector('.modal');
+const modalInfo = document.querySelectorAll('.modal__info');
 const btnModal = document.getElementById('modal');
 const btnCloseModal = document.getElementById('close');
+const btnRadio = document.querySelectorAll('.radio');
+console.log(modalInfo);
+
 
 
 // Evento para mostrar el menu mobile
@@ -51,7 +55,6 @@ window.addEventListener('resize',() => {
 
 
 // Evento para abrir la modal
-
 btnModal.addEventListener('click', () => {
     modal.classList.add('modal-show');
 });
@@ -59,4 +62,32 @@ btnModal.addEventListener('click', () => {
 btnCloseModal.addEventListener('click', (e) => {
     e.preventDefault();
     modal.classList.remove('modal-show');
+});
+
+
+// Metodo para los radio buttons de la modal
+btnRadio.forEach((radio, index) => {
+    radio.addEventListener('click', () =>{
+        modalInfo.forEach((container, containerIndex) => {
+            if(index === containerIndex){
+                container.classList.add('modal__info--active');
+            }else{
+                container.classList.remove('modal__info--active');
+            }
+        });
+    });
+});
+
+
+// Metodo para cambiar de color icono
+
+const iconClose = document.querySelector('.icon-close');
+
+iconClose.addEventListener('mouseover', () =>{
+    iconClose.setAttribute('src', './images/icon-close-modal-red.svg');
+    iconClose.classList.add('icon-close-active');
+});
+iconClose.addEventListener('mouseout', () =>{
+    iconClose.setAttribute('src', './images/icon-close-modal.svg');
+    iconClose.classList.remove('icon-close-active');
 });
