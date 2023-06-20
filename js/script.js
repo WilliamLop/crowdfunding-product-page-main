@@ -6,11 +6,31 @@ const pictureImg = document.querySelector('.picture__img');
 const main = document.querySelector('.main');
 const modal = document.querySelector('.modal');
 const modalInfo = document.querySelectorAll('.modal__info');
-const btnModal = document.getElementById('modal');
+const btnModal = document.querySelectorAll('.modal-btn');
 const btnCloseModal = document.getElementById('close');
 const btnRadio = document.querySelectorAll('.radio');
-console.log(modalInfo);
+const modalShow = document.querySelectorAll('.modal__show');
+const modalInfoShow = document.querySelectorAll('.modal__info--modal--show');
+const infoTitle = document.querySelectorAll('.info__title');
+const modalContainer = document.querySelector('.modal__container');
+console.log(modalContainer);
 
+
+
+
+
+// Evento para cambiar de color cuando se le de click a los title de la modal
+infoTitle.forEach((radio, index) => {
+    radio.addEventListener('click', () => {
+        infoTitle.forEach((title, tileIndex) => {
+            if(index === tileIndex) {
+                title.style.color = 'hsl(176, 72%, 28%)';
+            }else{
+                title.style.color = 'black';
+            }
+        });
+    });
+});
 
 
 // Evento para mostrar el menu mobile
@@ -42,7 +62,6 @@ function filtersNot(){
 }
 
 // Evento para quitar el nav cuando se agrande la pantalla
-
 window.addEventListener('resize',() => {
     const isMenuActive = document.querySelector('.nav-show');
 
@@ -53,15 +72,29 @@ window.addEventListener('resize',() => {
     }
 });
 
+// Funcion para cerrar la modalShow
+function cerrarValores(){
+    const modalPledge = document.querySelector('.modal__pledge');
+
+    modalPledge.addEventListener('click', () => {
+        modalShow.forEach((modal) => {
+            modal.classList.remove('modal__show--active');
+        })
+    });
+}
 
 // Evento para abrir la modal
-btnModal.addEventListener('click', () => {
-    modal.classList.add('modal-show');
-});
-
-btnCloseModal.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.classList.remove('modal-show');
+btnModal.forEach((modalBtn) => {
+    modalBtn.addEventListener('click', () => {
+        modal.classList.add('modal-show');
+        modalContainer.style.display = 'grid';
+        modal.style.display = 'grid';
+    });
+    
+    btnCloseModal.addEventListener('click', (e) => {
+        e.preventDefault();        
+        modal.classList.remove('modal-show');
+    });
 });
 
 
@@ -74,10 +107,29 @@ btnRadio.forEach((radio, index) => {
             }else{
                 container.classList.remove('modal__info--active');
             }
-        });
+        });        
     });
 });
 
+
+
+// Funcion para abrir los modal__show dentro de la modal
+function openButtonsModal(){
+
+    modalInfoShow.forEach((radio, index) => {
+        radio.addEventListener('click', () =>{
+            modalShow.forEach((modal, modalIndex) => {
+                if(index === modalIndex) {
+                        modal.classList.add('modal__show--active');
+                }else{
+                        modal.classList.remove('modal__show--active');
+                }
+            });
+        });
+    });
+    cerrarValores();
+}
+openButtonsModal();
 
 // Metodo para cambiar de color icono
 
@@ -91,3 +143,38 @@ iconClose.addEventListener('mouseout', () =>{
     iconClose.setAttribute('src', './images/icon-close-modal.svg');
     iconClose.classList.remove('icon-close-active');
 });
+
+
+
+// Agrego funcion para mostrar card de finalizacion
+const backCard = document.querySelector('.card__back');
+const submitGot = document.getElementById('got-submit');
+const btnContinue = document.querySelectorAll('.continue');
+console.log(btnContinue);
+
+
+
+let selectedOption = 0;
+
+btnContinue.forEach((btnContinuar, index) => {
+    btnContinuar.addEventListener('click', () =>{
+        console.log('click');
+        if (selectedOption ===  0) {
+            backCard.classList.remove('hidden');
+            modalContainer.style.display = 'none';
+        } else {
+            console.log('soy if');
+        }
+    });
+});
+
+submitGot.addEventListener('click', (e) => {
+    e.preventDefault();
+    backCard.classList.add('hidden');
+    modal.style.display = 'none';
+
+});
+
+
+
+

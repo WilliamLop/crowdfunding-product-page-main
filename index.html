@@ -110,7 +110,7 @@
                 <p class="modal__paragraph">
                   Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
                 </p>
-                <div class="modal__info grid">
+                <div class="modal__info grid  modal__pledge">
                   <div class="info__text">
                     <input type="radio" name="radio-btn" id="radio-btn0" class="radio">
                     <label for="radio-btn0"></label>
@@ -121,7 +121,7 @@
                     you will be signed up to receive product updates via email.
                   </p>
                 </div>
-                <div class="modal__info grid">
+                <div class="modal__info grid  modal__info--modal--show">
                   <div class="info__text">
                     <input type="radio" name="radio-btn" id="radio-btn1" class="radio">
                     <label for="radio-btn1"></label>
@@ -138,15 +138,16 @@
                     <h3 class="price price__modal">101</h3>
                     <p class="left">left</p>
                   </div>
-                  <!-- <div class="modal__show">
-                    <p class="show__text">Enter your pledge</p>
-                    <div class="show__inputs">
-                      <input type="text" name="money" id="money" placeholder="$">
-                      <button class="continue" id="continue">Continue</button>
+                  <!-- Modal show -->
+                    <div class="modal__show">
+                        <p class="show__text">Enter your pledge</p>
+                        <div class="show__inputs">
+                          <input type="text" name="money" id="money" class="show__money"  value="25">
+                          <button class="continue" id="continue">Continue</button>
+                        </div>
                     </div>
-                  </div> -->
                 </div>
-                <div class="modal__info grid ">
+                <div class="modal__info grid  modal__info--modal--show">
                   <div class="info__text">
                     <input type="radio" name="radio-btn" id="radio-btn2" class="radio">
                     <label for="radio-btn2"></label>
@@ -163,13 +164,14 @@
                     <h3 class="price price__modal">64</h3>
                     <p class="left">left</p>
                   </div>
-                  <!-- <div class="modal__show">
+                  <!-- Modal show -->
+                  <div class="modal__show">
                     <p class="show__text">Enter your pledge</p>
                     <div class="show__inputs">
-                      <input type="text" name="money" id="money" placeholder="$">
-                      <button class="continue" id="continue">Continue</button>
+                      <input type="text" name="money" id="money" class="show__money"  value="75">
+                      <button class="continue" id="submit">Continue</button>
                     </div>
-                  </div> -->
+                  </div>
                 </div>
                 <div class="modal__info grid card__off">
                   <div class="info__text">
@@ -189,13 +191,6 @@
                     <h3 class="price price__modal">0</h3>
                     <p class="left">left</p>
                   </div>
-                  <!-- <div class="modal__show">
-                    <p class="show__text">Enter your pledge</p>
-                    <div class="show__inputs">
-                      <input type="text" name="money" id="money" placeholder="$">
-                      <button class="continue" id="continue">Continue</button>
-                    </div>
-                  </div> -->
                 </div>
 
 
@@ -205,6 +200,20 @@
               </a>
             </div>
           </div>
+
+          <section class="card__back hidden">
+            <div class="card__img">
+              <img src="images/icon-check.svg" alt="ilustration-check" title="Check">
+            </div>
+            <p class="card__title">Thanks for your support!</p>
+
+            <p class="card__description">
+              Your pledge brings us one step closer to sharing Masyercraft Bamboo with Monitor Riser worldwide. You 
+              will get an email once our campaign is completed.
+            </p>
+
+            <button type="submit" class="btn got" id="got-submit">Got it!</button>
+          </section>
           <article class="card__article card">
             <div class="article__info">
               <h4 class="info__subtitle">Black Edition Stand</h4>
