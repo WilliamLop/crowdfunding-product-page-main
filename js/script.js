@@ -15,6 +15,8 @@ const infoTitle = document.querySelectorAll('.info__title');
 const label = document.querySelectorAll('.label');
 const modalContainer = document.querySelector('.modal__container');
 const body = document.body;
+const money = document.querySelectorAll('.money');
+
 
 // Evento para mostrar el menu mobile
 btnMenu.addEventListener('click', () => {
@@ -145,15 +147,31 @@ iconClose.addEventListener('mouseout', () =>{
 const backCard = document.querySelector('.card__back');
 const submitGot = document.getElementById('got-submit');
 const btnContinue = document.querySelectorAll('.continue');
-console.log(btnContinue);
+// console.log(money);
+
+
+
+
+const backed = document.querySelector('.backed');
+let backeds =  89914;
+backed.textContent = backeds.toLocaleString();
 
 
 
 let selectedOption = 0;
 
+// Backers news
+let clickCount = 0;
+const stadisticsNumber = document.querySelector('.backers');
+let backers = 5007;
+stadisticsNumber.textContent = backers.toLocaleString();
+
 btnContinue.forEach((btnContinuar, index) => {
     btnContinuar.addEventListener('click', (e) =>{
 
+
+        clickCount++;
+        stadisticsNumber.textContent = (backers + clickCount).toLocaleString();
         e.preventDefault();
         if (selectedOption ===  0) {
             backCard.classList.add('cardBack-active');
@@ -171,8 +189,16 @@ btnContinue.forEach((btnContinuar, index) => {
             });
         });
 
+        // para centrar la card y llevarme a ella cuando le de click
         backCard.scrollIntoView({block: "center"});
         
+
+        // Como traer el valor de cada bambo, sea 25 0 75
+        let input = e.target.previousElementSibling;
+        let inputValue = Number(input.value);
+        backeds += inputValue;
+        backed.textContent = backeds.toLocaleString();
+
     });
 });
 
@@ -203,11 +229,13 @@ btnCloseModal.addEventListener('click', (e) => {
 
 });
 
+
 submitGot.addEventListener('click', (e) => {
     e.preventDefault();
     backCard.classList.remove('cardBack-active');
     modal.style.display = 'none';
     body.classList.remove('scroll');
+
 });
 
 
@@ -227,4 +255,5 @@ function bookmarkStateButton(){
 }
 
 bookmarkStateButton();
+
 
