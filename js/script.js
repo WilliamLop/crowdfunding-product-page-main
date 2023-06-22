@@ -12,26 +12,9 @@ const btnRadio = document.querySelectorAll('.radio');
 const modalShow = document.querySelectorAll('.modal__show');
 const modalInfoShow = document.querySelectorAll('.modal__info--modal--show');
 const infoTitle = document.querySelectorAll('.info__title');
+const label = document.querySelectorAll('.label');
 const modalContainer = document.querySelector('.modal__container');
-console.log(modalContainer);
-
-
-
-
-
-// Evento para cambiar de color cuando se le de click a los title de la modal
-infoTitle.forEach((radio, index) => {
-    radio.addEventListener('click', () => {
-        infoTitle.forEach((title, tileIndex) => {
-            if(index === tileIndex) {
-                title.style.color = 'hsl(176, 72%, 28%)';
-            }else{
-                title.style.color = 'black';
-            }
-        });
-    });
-});
-
+const body = document.body;
 
 // Evento para mostrar el menu mobile
 btnMenu.addEventListener('click', () => {
@@ -89,28 +72,40 @@ btnModal.forEach((modalBtn) => {
         modal.classList.add('modal-show');
         modalContainer.style.display = 'grid';
         modal.style.display = 'grid';
+        body.classList.add('scroll');
     });
     
     btnCloseModal.addEventListener('click', (e) => {
         e.preventDefault();        
-        modal.classList.remove('modal-show');
+        modal.classList.remove('modal-show');        
+        body.classList.remove('scroll');
     });
 });
+
 
 
 // Metodo para los radio buttons de la modal
 btnRadio.forEach((radio, index) => {
-    radio.addEventListener('click', () =>{
-        modalInfo.forEach((container, containerIndex) => {
-            if(index === containerIndex){
-                container.classList.add('modal__info--active');
-            }else{
-                container.classList.remove('modal__info--active');
-            }
-        });        
+        radio.addEventListener('click', () =>{
+            modalInfo.forEach((container, containerIndex) => {
+                if(index === containerIndex){
+                    container.classList.add('modal__info--active');
+                }else{
+                    container.classList.remove('modal__info--active');
+                }
+                infoTitle.forEach((title, tileIndex) => {
+                    if(index === tileIndex) {
+                        title.style.color = 'hsl(176, 72%, 28%)';
+                    }else{
+                        title.style.color = 'black';
+                    }
+                });
+
+                radio.classList.remove("sinDecoracion");
+            });      
+            
     });
 });
-
 
 
 // Funcion para abrir los modal__show dentro de la modal
@@ -157,24 +152,79 @@ console.log(btnContinue);
 let selectedOption = 0;
 
 btnContinue.forEach((btnContinuar, index) => {
-    btnContinuar.addEventListener('click', () =>{
-        console.log('click');
+    btnContinuar.addEventListener('click', (e) =>{
+
+        e.preventDefault();
         if (selectedOption ===  0) {
-            backCard.classList.remove('hidden');
+            backCard.classList.add('cardBack-active');
             modalContainer.style.display = 'none';
-        } else {
-            console.log('soy if');
-        }
+        } 
+        
+        QuitarEstilosModal();
+
+        modalInfoShow.forEach((radio, index) => {
+            radio.addEventListener('click', () =>{
+                modalShow.forEach((modal, modalIndex) => {
+                    modal.classList.remove('modal__show--active');
+                });
+                openButtonsModal();
+            });
+        });
+
+        backCard.scrollIntoView({block: "center"});
+        
     });
+});
+
+
+function QuitarEstilosModal(){
+
+    const radio = document.querySelectorAll('.radio');
+    
+    radio.forEach((radios) => {
+        radios.classList.add('sinDecoracion');
+    });
+
+    modalInfo.forEach((modals) => {
+        modals.classList.remove('modal__info--active');
+    });
+
+    infoTitle.forEach((title) => {
+        title.style.color = 'black';
+    });
+}
+
+btnCloseModal.addEventListener('click', (e) => {
+
+    QuitarEstilosModal();
+    modalShow.forEach((modal, modalIndex) => {
+        modal.classList.remove('modal__show--active');
+    });
+
 });
 
 submitGot.addEventListener('click', (e) => {
     e.preventDefault();
-    backCard.classList.add('hidden');
+    backCard.classList.remove('cardBack-active');
     modal.style.display = 'none';
-
+    body.classList.remove('scroll');
 });
 
 
+// Function para bookmark
 
+const divBookmark = document.querySelector('.master__favorite');
+const btnBookmark = document.querySelector('.bookmark');
+const btnBook = document.querySelector('.btn-bookmark');
+const textBookmark = document.querySelector('.text-favorite');
+
+function bookmarkStateButton(){
+    btnBookmark.addEventListener( 'click', () => {
+        btnBookmark.classList.toggle('bookmark--active');
+        divBookmark.classList.toggle('master__favorite--active');
+        textBookmark.classList.toggle('text-favorite--active');
+    });
+}
+
+bookmarkStateButton();
 

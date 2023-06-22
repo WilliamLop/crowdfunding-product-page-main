@@ -44,9 +44,10 @@
         <div class="master__info">
           <a href="#" class="btn btn-back">Back this project</a>
           <div class="master__favorite">
-            <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#2F2F2F" cx="28" cy="28" r="28"/><path fill="#B1B1B1" d="M23 19v18l5-5.058L33 37V19z"/></g>
+            <button class="btn-bookmark">
+              <img width="56" height="56"  class="bookmark" />
               <span class="text-favorite">Bookmark</span>
-            </svg>
+            </button>
           </div>
           
         </div>
@@ -169,13 +170,13 @@
                     <p class="show__text">Enter your pledge</p>
                     <div class="show__inputs">
                       <input type="text" name="money" id="money" class="show__money"  value="75">
-                      <a href="#cardBack" class="continue" id="submit">Continue</a>
+                      <button class="continue" id="submit">Continue</button>
                     </div>
                   </div>
                 </div>
                 <div class="modal__info grid card__off">
                   <div class="info__text">
-                    <input type="radio" name="radio-btn" id="radio-btn" class="radio">
+                    <input type="radio" name="radio-btn" id="radio-btn" class="radio radio-of">
                     <label for="radio-btn"></label>
                     <div class="info__content">
                       <h3 class="info__title">Mahogany Spacial Edition</h3>
@@ -201,7 +202,7 @@
             </div>
           </div>
 
-          <section class="card__back hidden" id="#cardBack">
+          <section class="card__back " id="#cardBack">
             <div class="card__img">
               <img src="images/icon-check.svg" alt="ilustration-check" title="Check">
             </div>
