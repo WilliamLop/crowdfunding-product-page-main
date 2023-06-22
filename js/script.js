@@ -15,7 +15,8 @@ const infoTitle = document.querySelectorAll('.info__title');
 const label = document.querySelectorAll('.label');
 const modalContainer = document.querySelector('.modal__container');
 const body = document.body;
-const money = document.querySelectorAll('.money');
+const input = document.querySelector('#money');
+
 
 
 // Evento para mostrar el menu mobile
@@ -141,17 +142,12 @@ iconClose.addEventListener('mouseout', () =>{
     iconClose.classList.remove('icon-close-active');
 });
 
-
-
 // Agrego funcion para mostrar card de finalizacion
 const backCard = document.querySelector('.card__back');
 const submitGot = document.getElementById('got-submit');
 const btnContinue = document.querySelectorAll('.continue');
-// console.log(money);
-
 
 const progress = document.querySelector('.progress');
-
 
 const backed = document.querySelector('.backed');
 let backeds =  89914;
@@ -170,7 +166,6 @@ stadisticsNumber.textContent = backers.toLocaleString();
 
 btnContinue.forEach((btnContinuar, index) => {
     btnContinuar.addEventListener('click', (e) =>{
-
 
         clickCount++;
         stadisticsNumber.textContent = (backers + clickCount).toLocaleString();
@@ -201,8 +196,6 @@ btnContinue.forEach((btnContinuar, index) => {
         backeds += inputValue;
         backed.textContent = backeds.toLocaleString();
         progress.style.width = `${(backeds / maxBackeds) * 100}%`;
-        let variable = progress.style.width = `${(backeds / maxBackeds) * 100}%`;
-        console.log(variable);
 
         input.value = input.defaultValue;
 
@@ -212,14 +205,27 @@ btnContinue.forEach((btnContinuar, index) => {
 
 // evento para comprobar si la suma de su valor y el valor actual de la variable
 // supera el valor mácimo 100.000
-const input = document.querySelector('#money');
 
 input.addEventListener('input', (e) => {
     let inputValue = Number(input.value);
     if (inputValue + backeds > maxBackeds) {
         input.value = maxBackeds - backeds;
     }
+    
+    // let mon = input.value;
+    //     console.log(mon);
+
+        // const inputs = document.querySelectorAll('.money');
+
+        // inputs.forEach((input) => {
+        // if(input.value === ''){
+        //     input.style.border = '1px solid red';
+        // }else{
+        //     input.style.border = 'hsla(0, 0%, 72%, 0.26)';
+        // }
+    // });
 });
+
 
 function QuitarEstilosModal(){
 

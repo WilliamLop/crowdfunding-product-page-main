@@ -502,9 +502,12 @@ h4 {
     padding-inline-start: 2rem;
     position: relative;
     font-weight: 700;
-    pointer-events: fill;
+    /* pointer-events: fill; */
 }
 
+.prevent{
+   pointer-events: none; 
+}
 .show__money:focus-within{
     outline: 1px solid var(--Darkcyan);
 }
