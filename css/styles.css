@@ -258,7 +258,7 @@ h4 {
 }
 
 .progress {
-    width: 75%;
+    width: calc((89914 / 100000) * 100%);
     height: 100%;
     border-radius: 2rem;
     background-color: var(--Moderatecyan);
@@ -502,6 +502,7 @@ h4 {
     padding-inline-start: 2rem;
     position: relative;
     font-weight: 700;
+    pointer-events: fill;
 }
 
 .show__money:focus-within{

@@ -150,13 +150,15 @@ const btnContinue = document.querySelectorAll('.continue');
 // console.log(money);
 
 
+const progress = document.querySelector('.progress');
 
 
 const backed = document.querySelector('.backed');
 let backeds =  89914;
+let maxBackeds = 100000;
 backed.textContent = backeds.toLocaleString();
 
-
+progress.style.width = `${(backeds / maxBackeds) * 100}%`;
 
 let selectedOption = 0;
 
@@ -193,15 +195,31 @@ btnContinue.forEach((btnContinuar, index) => {
         backCard.scrollIntoView({block: "center"});
         
 
-        // Como traer el valor de cada bambo, sea 25 0 75
+        // Como traer el valor de cada bambo, sea 25 0 75 y sumarlo con backed elmento
         let input = e.target.previousElementSibling;
         let inputValue = Number(input.value);
         backeds += inputValue;
         backed.textContent = backeds.toLocaleString();
+        progress.style.width = `${(backeds / maxBackeds) * 100}%`;
+        let variable = progress.style.width = `${(backeds / maxBackeds) * 100}%`;
+        console.log(variable);
+
+        input.value = input.defaultValue;
 
     });
 });
 
+
+// evento para comprobar si la suma de su valor y el valor actual de la variable
+// supera el valor mácimo 100.000
+const input = document.querySelector('#money');
+
+input.addEventListener('input', (e) => {
+    let inputValue = Number(input.value);
+    if (inputValue + backeds > maxBackeds) {
+        input.value = maxBackeds - backeds;
+    }
+});
 
 function QuitarEstilosModal(){
 
